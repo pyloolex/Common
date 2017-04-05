@@ -9,10 +9,20 @@
 	  auto-save-list-file-name nil)
 
 
-(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "RET") 'newline-and-indent)                           
 
 (show-paren-mode t) ; Highlight expression between {}, (), []
 (setq show-paren-style 'parenthesis) ; parenthesis | expression | mixed
+
+(add-hook 'html-mode-hook
+		    (lambda ()
+			      ;; Default indentation is usually 2 spaces, changing to 4.
+			      (set (make-local-variable 'sgml-basic-offset) 4)))
+(setq font-lock-maximum-decoration
+	  '((html-mode . 1)))
+
+(setq column-number-mode t)
+
 
 ;(electric-pair-mode t)
 ;(setq electric-pair-preserve-balance nil)
