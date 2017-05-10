@@ -33,4 +33,4 @@
   whitespace-line-column 78
    whitespace-style       '(face lines-tail))
 (add-hook 'prog-mode-hook #'whitespace-mode) ; only if I write code
-(add-hook 'text-mode-hook #'whitespace-mode)
+(add-hook 'text-mode-hook #'whitespace-mode) ; and the other cases
