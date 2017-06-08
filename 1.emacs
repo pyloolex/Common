@@ -2,7 +2,7 @@
 	  c-basic-offset 4)
 (setq-default c-basic-offset 4
 			  tab-width 4
-			  indent-tabs-mode t)
+			  indent-tabs-mode nil)
 
 (setq make-backup-files nil
 	  auto-save-default nil
@@ -38,3 +38,26 @@
    whitespace-style       '(face lines-tail))
 (add-hook 'prog-mode-hook #'whitespace-mode) ; only if I write code
 (add-hook 'text-mode-hook #'whitespace-mode) ; and the other cases
+
+
+(add-hook 'js-mode-hook
+    (lambda()
+        (local-set-key (kbd "{")
+            (lambda() (interactive)
+                (my-back-tab)
+                (insert "{")               
+            )
+        )
+        (local-set-key (kbd "}")
+            (lambda() (interactive)
+                (insert "}")
+                (c-indent-command)         
+            )
+        )
+    )
+)
+
+(defun my-back-tab()
+    (setq cnt (min 4 (current-column)))
+    (delete-backward-char cnt)
+)
