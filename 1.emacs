@@ -39,7 +39,7 @@
 (add-hook 'prog-mode-hook #'whitespace-mode) ; only if I write code
 (add-hook 'text-mode-hook #'whitespace-mode) ; and the other cases
 
-
+; my implementation auto-indenting bsd-style
 (add-hook 'js-mode-hook
     (lambda()
         (local-set-key (kbd "{")
