@@ -1,3 +1,13 @@
+; ____________________________________________________________________________
+; Including packages
+;_____________________________________________________________________________
+
+(require 'cl)
+
+; ____________________________________________________________________________
+; Using default emacs's settings
+; ____________________________________________________________________________
+
 (setq c-default-style "bsd" 
 	  c-basic-offset 4)
 (setq-default c-basic-offset 4
@@ -44,7 +54,7 @@
     (lambda()
         (local-set-key (kbd "{")
             (lambda() (interactive)
-                (my-back-tab)
+                (my-bsd-lparen-align)
                 (insert "{")               
             )
         )
@@ -57,7 +67,50 @@
     )
 )
 
-(defun my-back-tab()
-    (setq cnt (min 4 (current-column)))
-    (delete-backward-char cnt)
+
+
+
+
+;(global-set-key (kbd "\C-h") (lambda() (interactive)
+;            (my-bsd-lparen-align)))
+
+
+
+
+; ____________________________________________________________________________
+; My own functions
+; ____________________________________________________________________________
+
+
+(defun my-bsd-lparen-align()
+    (skip-chars-forward " \t")
+	(setq cur_pos (point))
+    (my-line-begin)
+    (setq new_pos (point))
+    (goto-char cur_pos)
+    (if (eq cur_pos new_pos)
+        (__my-bsd-lparen-put)
+    )
 )
+
+(defun my-line-begin()
+  (beginning-of-line)
+  (skip-chars-forward " \t")
+  (current-column)
+)
+
+(defun __my-bsd-lparen-put()
+	(setq init_pos (point))
+    (setq cur_start (my-line-begin))
+    (forward-line -1)
+    (setq block_start (my-line-begin))
+    (setq diff (- cur_start block_start))
+    (goto-char init_pos)
+    (if (>= diff 0)
+        (delete-backward-char diff)
+        (loop for i from 1 to (- diff) do (insert " "))
+    )
+)
+
+
+          
