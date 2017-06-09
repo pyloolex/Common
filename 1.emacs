@@ -9,14 +9,15 @@
 ; ____________________________________________________________________________
 
 (setq c-default-style "bsd" 
-		c-basic-offset 4)
+		c-basic-offset 4
+        indent-tabs-mode nil)
 (setq-default c-basic-offset 4
 			  tab-width 4
 			  indent-tabs-mode nil)
 
 (setq make-backup-files nil
-	  auto-save-default nil
-	  auto-save-list-file-name nil)
+		auto-save-default nil
+		auto-save-list-file-name nil)
 
 
 (global-set-key (kbd "RET") 'newline-and-indent)                           
