@@ -9,32 +9,21 @@
 ; ____________________________________________________________________________
 
 (setq c-default-style "bsd" 
-		c-basic-offset 4
-        indent-tabs-mode nil)
+      c-basic-offset 4)
 (setq-default c-basic-offset 4
-			  tab-width 4
-			  indent-tabs-mode nil)
+              tab-width 4
+              indent-tabs-mode nil)
 
 (setq make-backup-files nil
-		auto-save-default nil
-		auto-save-list-file-name nil)
-
+      auto-save-default nil
+      auto-save-list-file-name nil)
 
 (global-set-key (kbd "RET") 'newline-and-indent)                           
 
 (show-paren-mode t) ; Highlight expression between {}, (), []
 (setq show-paren-style 'parenthesis) ; parenthesis | expression | mixed
 
-(add-hook 'html-mode-hook
-		    (lambda ()
-			      ;; Default indentation is usually 2 spaces, changing to 4.
-			      (set (make-local-variable 'sgml-basic-offset) 2)
-				  (setq tab-width 2)
-			)
-)
-
-(setq font-lock-maximum-decoration
-	  '((html-mode . 1)))
+(setq font-lock-maximum-decoration '((html-mode . 1)))
 
 (setq column-number-mode t)
 
@@ -44,13 +33,23 @@
 
 
 ; 80 letters rule (highlight)
-(setq-default
-  whitespace-line-column 78
-   whitespace-style       '(face lines-tail))
+(setq-default whitespace-line-column 78
+              whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook #'whitespace-mode) ; only if I write code
 (add-hook 'text-mode-hook #'whitespace-mode) ; and the other cases
 
-; my implementation auto-indenting bsd-style
+; ____________________________________________________________________________
+; Hooks
+; ____________________________________________________________________________
+
+(add-hook 'html-mode-hook
+    (lambda ()
+        ;; Default indentation is usually 4 spaces, changing to 2.
+        (set (make-local-variable 'sgml-basic-offset) 2)
+        (setq tab-width 2)
+    )
+)
+
 (add-hook 'js-mode-hook
     (lambda()
         (local-set-key (kbd "{")
@@ -83,6 +82,7 @@
 ; ____________________________________________________________________________
 
 
+; my implementation auto-indenting bsd-style
 (defun my-bsd-lparen-align()
     (skip-chars-forward " \t")
 	(setq cur_pos (point))
@@ -95,13 +95,13 @@
 )
 
 (defun my-line-begin()
-  (beginning-of-line)
-  (skip-chars-forward " \t")
-  (current-column)
+    (beginning-of-line)
+    (skip-chars-forward " \t")
+    (current-column)
 )
 
 (defun __my-bsd-lparen-put()
-	(setq init_pos (point))
+    (setq init_pos (point))
     (setq cur_start (my-line-begin))
     (forward-line -1)
     (setq block_start (my-line-begin))
@@ -112,6 +112,3 @@
         (loop for i from 1 to (- diff) do (insert " "))
     )
 )
-
-
-          
