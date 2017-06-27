@@ -18,7 +18,10 @@
       auto-save-default nil
       auto-save-list-file-name nil)
 
-(global-set-key (kbd "RET") 'newline-and-indent)                           
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
+(global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
+;(global-set-key (kbd "\C-q TAB") 'newline-and-indent)
 
 (show-paren-mode t) ; Highlight expression between {}, (), []
 (setq show-paren-style 'parenthesis) ; parenthesis | expression | mixed
@@ -47,6 +50,9 @@
         ;; Default indentation is usually 4 spaces, changing to 2.
         (set (make-local-variable 'sgml-basic-offset) 2)
         (setq tab-width 2)
+
+        (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
+        
     )
 )
 
@@ -61,7 +67,8 @@
         (local-set-key (kbd "}")
             (lambda() (interactive)
                 (insert "}")
-                (c-indent-command)         
+                (indent-according-to-mode)
+                ;(c-indent-command)                
             )
         )
     )
@@ -85,7 +92,7 @@
 ; my implementation auto-indenting bsd-style
 (defun my-bsd-lparen-align()
     (skip-chars-forward " \t")
-	(setq cur_pos (point))
+    (setq cur_pos (point))
     (my-line-begin)
     (setq new_pos (point))
     (goto-char cur_pos)
