@@ -51,7 +51,7 @@
         (set (make-local-variable 'sgml-basic-offset) 2)
         (setq tab-width 2)
 
-        (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
+        (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "  ")))
         
     )
 )
