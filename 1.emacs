@@ -18,11 +18,6 @@
       auto-save-default nil
       auto-save-list-file-name nil)
 
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
-(global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
-;(global-set-key (kbd "\C-q TAB") 'newline-and-indent)
-
 (show-paren-mode t) ; Highlight expression between {}, (), []
 (setq show-paren-style 'parenthesis) ; parenthesis | expression | mixed
 
@@ -34,6 +29,13 @@
 ;(setq electric-pair-preserve-balance nil)
 ;(electric-indent-mode -1)
 
+; Forbid auto-indent previous line
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1)) 
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
+(global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
+;(global-set-key (kbd "\C-q TAB") 'newline-and-indent)
 
 ; 80 letters rule (highlight)
 (setq-default whitespace-line-column 78
@@ -61,7 +63,7 @@
         (local-set-key (kbd "{")
             (lambda() (interactive)
                 (my-bsd-lparen-align)
-                (insert "{")               
+                (insert "{")                
             )
         )
         (local-set-key (kbd "}")
