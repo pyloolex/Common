@@ -1,3 +1,18 @@
 #!/bin/bash
+
+if [ $# -eq 1 ]
+then
+    sed -i -r 's/ *$//g' $1
+    echo "* Successfully deleted trailing-whitespaces in "\"$1\"
+    exit 0
+fi
+
+list=(`find . -name '*.py'`)
+if [ ${#list[@]} -eq 0 ]
+then
+    echo "* No files found."
+    exit 0
+fi
+
 find . -name '*.py' -exec sed -i -r 's/ *$//g' {} \;
 echo "* Successfully deleted trailing-whitespaces in .py files from this directory."
