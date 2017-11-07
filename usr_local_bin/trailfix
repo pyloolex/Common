@@ -1,0 +1,3 @@
+#!/bin/bash
+find . -name '*.py' -exec sed -i -r 's/ *$//g' {} \;
+echo "* Successfully deleted trailing-whitespaces in .py files from this directory."
