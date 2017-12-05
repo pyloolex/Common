@@ -32,6 +32,8 @@
 ; Forbid auto-indent previous line
 (when (fboundp 'electric-indent-mode) (electric-indent-mode -1)) 
 
+(setq forward-sexp-function nil)
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
 (global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
