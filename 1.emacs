@@ -37,7 +37,9 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
 (global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
-;(global-set-key (kbd "\C-q TAB") 'newline-and-indent)
+
+; Auto reload files if they were changed on the disk.
+(global-auto-revert-mode t)
 
 ; 80 letters rule (highlight)
 (setq-default whitespace-line-column 78
@@ -48,6 +50,24 @@
 ; ____________________________________________________________________________
 ; Hooks
 ; ____________________________________________________________________________
+
+(add-hook 'c-mode-hook
+    (lambda ()
+        ;; Auto indent LPAREN
+        (local-set-key (kbd "{")
+            (lambda() (interactive)
+                (insert "{")
+                (indent-according-to-mode)
+            )
+        )
+        (local-set-key (kbd "}")
+            (lambda() (interactive)
+                (insert "}")
+                (indent-according-to-mode)
+            )
+        )        
+    )
+)
 
 (add-hook 'html-mode-hook
     (lambda ()
