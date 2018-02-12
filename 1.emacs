@@ -25,6 +25,8 @@
 
 (setq column-number-mode t)
 
+(setq scroll-step 1)
+
 ;(electric-pair-mode t)
 ;(setq electric-pair-preserve-balance nil)
 ;(electric-indent-mode -1)
