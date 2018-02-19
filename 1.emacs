@@ -26,6 +26,7 @@
 (setq column-number-mode t)
 
 (setq scroll-step 1)
+(setq comint-input-ignoredups t) ; ignore duplicates in shell
 
 ;(electric-pair-mode t)
 ;(setq electric-pair-preserve-balance nil)
