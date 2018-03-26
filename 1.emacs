@@ -40,6 +40,7 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
 (global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
+(global-set-key (kbd "C-x %") 'query-replace)
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
