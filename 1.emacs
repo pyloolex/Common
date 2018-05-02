@@ -51,6 +51,9 @@
 (add-hook 'prog-mode-hook #'whitespace-mode) ; only if I write code
 (add-hook 'text-mode-hook #'whitespace-mode) ; and the other cases
 
+; Resolves problems with 'end' button inside tmux
+(define-key input-decode-map "\e[4~" [end])
+
 ; ____________________________________________________________________________
 ; Hooks
 ; ____________________________________________________________________________
