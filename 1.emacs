@@ -4,6 +4,7 @@
 
 (require 'cl)
 
+
 ; ____________________________________________________________________________
 ; Using default emacs's settings
 ; ____________________________________________________________________________
@@ -54,6 +55,7 @@
 ; Resolves problems with 'end' button inside tmux
 (define-key input-decode-map "\e[4~" [end])
 
+
 ; ____________________________________________________________________________
 ; Hooks
 ; ____________________________________________________________________________
@@ -82,7 +84,8 @@
         (set (make-local-variable 'sgml-basic-offset) 2)
         (setq tab-width 2)
 
-        (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "  ")))
+        (global-set-key (kbd "M-s TAB")
+                        (lambda() (interactive) (insert "  ")))
         
     )
 )
@@ -106,19 +109,9 @@
 )
 
 
-
-
-
-;(global-set-key (kbd "\C-h") (lambda() (interactive)
-;            (my-bsd-lparen-align)))
-
-
-
-
 ; ____________________________________________________________________________
 ; My own functions
 ; ____________________________________________________________________________
-
 
 ; my implementation auto-indenting bsd-style
 (defun my-bsd-lparen-align()
@@ -150,3 +143,23 @@
         (loop for i from 1 to (- diff) do (insert " "))
     )
 )
+
+
+; ____________________________________________________________________________
+; Color scheme
+; ____________________________________________________________________________
+
+;(set-face-attribute 'default nil :family "Menlo" :height 120)
+(set-face-attribute 'font-lock-builtin-face nil
+                    :foreground "#77aadd" :weight 'bold)
+(set-face-attribute 'font-lock-comment-face nil :foreground "#dd0000")
+(set-face-attribute 'font-lock-constant-face nil :foreground "#883388")
+(set-face-attribute 'font-lock-doc-face nil :foreground "#00a000")
+(set-face-attribute 'font-lock-function-name-face nil
+                    :foreground "#77aadd" :weight 'bold)
+(set-face-attribute 'font-lock-keyword-face nil
+                    :foreground "#00dddd" :weight 'bold)
+(set-face-attribute 'font-lock-negation-char-face nil :foreground "#ff6666")
+(set-face-attribute 'font-lock-string-face nil :foreground "#00a000")
+(set-face-attribute 'font-lock-type-face nil :foreground "#00a000")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "#ccbb00")
