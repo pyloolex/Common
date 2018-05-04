@@ -163,3 +163,5 @@
 (set-face-attribute 'font-lock-string-face nil :foreground "#00a000")
 (set-face-attribute 'font-lock-type-face nil :foreground "#00a000")
 (set-face-attribute 'font-lock-variable-name-face nil :foreground "#ccbb00")
+
+(custom-set-faces '(minibuffer-prompt ((t (:foreground "cyan")))))
