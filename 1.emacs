@@ -2,7 +2,10 @@
 ; Including packages
 ;_____________________________________________________________________________
 
+(package-initialize)
+
 (require 'cl)
+(require 'xclip) ; M-x package-list-packages to install
 
 
 ; ____________________________________________________________________________
@@ -54,6 +57,9 @@
 
 ; Resolves problems with 'end' button inside tmux
 (define-key input-decode-map "\e[4~" [end])
+
+; Allows copy and paste from Emacs
+(setq xclip-mode 1)
 
 
 ; ____________________________________________________________________________
@@ -164,4 +170,4 @@
 (set-face-attribute 'font-lock-type-face nil :foreground "#00a000")
 (set-face-attribute 'font-lock-variable-name-face nil :foreground "#ccbb00")
 
-(custom-set-faces '(minibuffer-prompt ((t (:foreground "cyan")))))
+(set-face-foreground 'minibuffer-prompt "cyan")
