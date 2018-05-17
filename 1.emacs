@@ -1,8 +1,29 @@
 ; ____________________________________________________________________________
-; Including packages
+; Installing packages
 ;_____________________________________________________________________________
 
+; list the packages you want
+(setq package-list '(xclip))
+
+; list the repositories containing them
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")))
+
+; activate all the packages (in particular autoloads)
 (package-initialize)
+
+; fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+
+; ____________________________________________________________________________
+; Including packages
+;_____________________________________________________________________________
 
 (require 'cl)
 (require 'xclip) ; M-x package-list-packages to install
@@ -12,7 +33,7 @@
 ; Using default emacs's settings
 ; ____________________________________________________________________________
 
-(setq c-default-style "bsd" 
+(setq c-default-style "bsd"
       c-basic-offset 4)
 (setq-default c-basic-offset 4
               tab-width 4
@@ -37,7 +58,7 @@
 ;(electric-indent-mode -1)
 
 ; Forbid auto-indent previous line
-(when (fboundp 'electric-indent-mode) (electric-indent-mode -1)) 
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 
 (setq forward-sexp-function nil)
 
@@ -80,7 +101,7 @@
                 (insert "}")
                 (indent-according-to-mode)
             )
-        )        
+        )
     )
 )
 
@@ -92,7 +113,6 @@
 
         (global-set-key (kbd "M-s TAB")
                         (lambda() (interactive) (insert "  ")))
-        
     )
 )
 
@@ -101,14 +121,14 @@
         (local-set-key (kbd "{")
             (lambda() (interactive)
                 (my-bsd-lparen-align)
-                (insert "{")                
+                (insert "{")
             )
         )
         (local-set-key (kbd "}")
             (lambda() (interactive)
                 (insert "}")
                 (indent-according-to-mode)
-                ;(c-indent-command)                
+                ;(c-indent-command)
             )
         )
     )
