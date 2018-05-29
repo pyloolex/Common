@@ -1,3 +1,4 @@
+alias sudo="sudo "
 alias emc="emacs -nw"
 alias py3="python3"
 alias postgre="sudo -u postgres -i"
