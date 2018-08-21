@@ -14,5 +14,18 @@ then
     exit 0
 fi
 
-find . -name '*.py' -exec sed -i -r 's/ *$//g' {} \;
-echo "* Successfully deleted trailing-whitespaces in .py files from this directory."
+echo "* Files to fix:"
+for file in "${list[@]}"
+do
+    echo "  $file"
+done
+
+echo -n "* Is it okay? ('y' to continue) "
+read confirmation
+if [ "$confirmation" = "y" ]
+then
+    find . -name '*.py' -exec sed -i -r 's/ *$//g' {} \;
+    echo "* Successfully deleted trailing-whitespaces in .py files from this directory."
+else
+    echo "* Cancelled."
+fi
