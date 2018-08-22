@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Probably obsolete...
 if [ $# -eq 1 ]
 then
     sed -i -r 's/ *$//g' $1
@@ -7,25 +8,57 @@ then
     exit 0
 fi
 
-list=(`find . -name '*.py'`)
-if [ ${#list[@]} -eq 0 ]
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+echo -e "${CYAN}... Files to fix ...${NC}"
+
+
+files_to_fix=()
+python_files=(`find . -name '*.py'`)
+for file in "${python_files[@]}"
+do
+    sed_list=(`sed -r -n '/  *$/=' $file`)
+    if [ ${#sed_list[@]} -gt 0 ]
+    then
+        files_to_fix=("${files_to_fix[@]}" $file)
+        echo -n "  $file ("
+
+        for i in "${!sed_list[@]}"
+        do
+            echo -n -e "${RED}${sed_list[$i]}${NC}"
+            if [ $(($i + 1)) -ne ${#sed_list[@]} ]
+            then
+                echo -n ", "
+            fi
+        done
+        echo ")"
+    fi
+done
+
+if [ ${#files_to_fix[@]} -eq 0 ]
 then
-    echo "* No files found."
+    echo -e "${CYAN}* No files to fix found.${NC}"
     exit 0
 fi
 
-echo "* Files to fix:"
-for file in "${list[@]}"
-do
-    echo "  $file"
-done
+echo ""
 
-echo -n "* Is it okay? ('y' to continue) "
+# TODO:
+# e - edit
+# Interactive mode with commands support
+# ls - list of files to fix
+# exclude <file>
+# include <file>
+echo -n -e "${CYAN}* Is it okay? (y/e/n)${NC} "
 read confirmation
 if [ "$confirmation" = "y" ]
 then
-    find . -name '*.py' -exec sed -i -r 's/ *$//g' {} \;
-    echo "* Successfully deleted trailing-whitespaces in .py files from this directory."
+    for file in "${files_to_fix[@]}"
+    do
+        sed -i -r 's/ *$//g' $file
+    done
+    echo -e "${CYAN}* Successfully deleted trailing-whitespaces in .py files from this directory.${NC}"
 else
-    echo "* Cancelled."
+    echo -e "${CYAN}* Cancelled.${NC}"
 fi
