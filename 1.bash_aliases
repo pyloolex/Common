@@ -7,4 +7,6 @@ alias l1="ls -1 --group-directories-first"
 alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
 alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 
-bind '"\C-f": forward-search-history' 
+bind '"\C-f": forward-search-history'
+
+alias pylint-diff="git diff origin/master --name-only | grep -e '.py$' | xargs pylint -r no"
