@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Necessary setting for crontab:
+eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)";
+
+battery_level=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage)
+battery_level=$(echo $battery_level | sed -e 's/percentage: \([0-9]\+\)%/\1/')
+
+on_ac_power
+charging=$((1 - $(echo $?)))
+
+if [ $battery_level -lt 30 -a $charging -eq 0 ]
+then
+    notify-send "Battery Warning" "WARNING: Battery level: $battery_level%" --urgency=critical
+elif [ 70 -lt $battery_level -a $charging -eq 1 ]
+then
+    notify-send "Charged!" "Battery is charged. Current level: $battery_level%" --urgency=critical --icon="/usr/local/bin/charged.png"
+fi
