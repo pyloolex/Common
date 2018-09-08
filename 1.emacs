@@ -2,6 +2,11 @@
 ; Installing packages
 ;_____________________________________________________________________________
 
+; Attention!!! If you want to use xclip, first you must install it in ubuntu:
+; sudo apt install xclip
+;
+; And then emacs will do the rest of work.
+
 ; list the packages you want
 (setq package-list '(xclip))
 
@@ -86,6 +91,9 @@
 (add-to-list 'auto-mode-alist '("\\.tac\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.tin\\'" . c++-mode))
 
+; If a region is selected, you can type something, and it will replace your
+; selected region.
+(delete-selection-mode 1)
 
 ; ____________________________________________________________________________
 ; Hooks
@@ -200,4 +208,3 @@
 ; ____________________________________________________________________________
 ; Trashcan (it is filled automatically)
 ; ____________________________________________________________________________
-
