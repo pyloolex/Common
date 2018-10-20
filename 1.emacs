@@ -91,6 +91,9 @@
 (add-to-list 'auto-mode-alist '("\\.tac\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.tin\\'" . c++-mode))
 
+; Associate .jsx files with js-mode
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
+
 ; If a region is selected, you can type something, and it will replace your
 ; selected region.
 (delete-selection-mode 1)
@@ -143,6 +146,8 @@
                 ;(c-indent-command)
             )
         )
+        (setq js-indent-level 2)
+        (setq tab-width 2)
     )
 )
 
