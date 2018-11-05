@@ -9,4 +9,13 @@ alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project doc
 
 bind '"\C-f": forward-search-history'
 
-alias pylint-diff="git diff origin/master --name-only | grep -e '.py$' | xargs pylint -r no"
+pylintdiff() {
+    if [ "$#" -ne 0 ]
+    then
+        branch="$1"
+    else
+        branch="origin/master"
+    fi
+
+    git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
+}
