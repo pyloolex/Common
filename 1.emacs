@@ -98,6 +98,10 @@
 ; selected region.
 (delete-selection-mode 1)
 
+; Remove color from builtin 'git blame'
+(defalias 'vcam 'vc-annotate-mode)
+
+
 ; ____________________________________________________________________________
 ; Hooks
 ; ____________________________________________________________________________
