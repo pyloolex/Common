@@ -27,4 +27,6 @@ if [[ $HOSTNAME == MacBook-Pro-Aleksey* ]]
 then
     PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     export LSCOLORS=exaccxdxGxegedabagehex
+    cp /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash /usr/local/etc/bash_completion.d/
+    source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
