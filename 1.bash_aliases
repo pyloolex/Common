@@ -26,5 +26,5 @@ pylintdiff() {
 if [[ $HOSTNAME == MacBook-Pro-Aleksey* ]]
 then
     PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    LSCOLORS=exaccxdxGxegedabagehex
+    export LSCOLORS=exaccxdxGxegedabagehex
 fi
