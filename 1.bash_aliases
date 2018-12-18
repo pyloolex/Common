@@ -10,8 +10,6 @@ alias grep="grep --color"
 alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
 alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 
-bind '"\C-f": forward-search-history'
-
 pylintdiff() {
     if [ "$#" -ne 0 ]
     then
@@ -23,7 +21,11 @@ pylintdiff() {
     git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
 }
 
-if [[ $HOSTNAME == MacBook-Pro-Aleksey* ]]
+HISTCONTROL=ignoreboth
+
+bind '"\C-f": forward-search-history'
+
+if [[ $HOSTNAME == MacBook-Pro-Aleksey* ]] || [[ $HOSTNAME == MBP-Aleksey* ]]
 then
     PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     export LSCOLORS=exaccxdxGxegedabagehex
