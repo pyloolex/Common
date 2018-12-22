@@ -21,7 +21,14 @@ pylintdiff() {
     git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
 }
 
-HISTCONTROL=ignoreboth
+# Preserve bash_history across multiple tmux sessions # # #
+HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=1000
+HISTFILESIZE=1000
+shopt -s histappend
+
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# # #
 
 bind '"\C-f": forward-search-history'
 
