@@ -16,7 +16,7 @@ pylintdiff() {
     then
         branch="$1"
     else
-        branch="origin/master"
+        branch="master"
     fi
 
     git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
