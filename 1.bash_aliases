@@ -6,7 +6,7 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 alias grep="grep --color"
-alias tmux="tmux new-session -n ''"
+alias tmx="tmux new-session -n ''"
 
 alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
 alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
