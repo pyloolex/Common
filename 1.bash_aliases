@@ -6,6 +6,7 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 alias grep="grep --color"
+alias tmux="tmux new-session -n ''"
 
 alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
 alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
@@ -21,14 +22,17 @@ pylintdiff() {
     git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
 }
 
-# Preserve bash_history across multiple tmux sessions # # #
 HISTCONTROL=ignoreboth:erasedups
 HISTSIZE=1000
 HISTFILESIZE=1000
-shopt -s histappend
 
-PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-# # #
+# Update bash_history after every command. It's useful when you use
+# tmux. Because you don't have to close every window manually in order
+# to update bash_history with window's history list.
+# I'm not sure that the command "shopt -s histappend" is really
+# necessary. It seems that everything works well without it.
+#shopt -s histappend
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 bind '"\C-f": forward-search-history'
 
