@@ -78,6 +78,8 @@
                     (vc-annotate-mode)
                 )
 )
+(global-set-key (kbd "C-c a") 'move-beginning-of-line)
+(global-set-key (kbd "C-c e") 'move-end-of-line)
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
