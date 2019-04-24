@@ -2,9 +2,6 @@ alias sudo="sudo "
 alias emc="emacs -nw"
 alias py3="python3"
 alias postgre="sudo -u postgres -i"
-alias ls="ls -G"
-alias ll="ls -l"
-alias la="ls -a"
 alias grep="grep --color"
 alias tmx="tmux new-session -n ''"
 
@@ -38,8 +35,15 @@ bind '"\C-f": forward-search-history'
 
 if [[ $HOSTNAME == MacBook-Pro-Aleksey* ]] || [[ $HOSTNAME == MBP-Aleksey* ]]
 then
+    alias ls="ls -G"
+    alias ll="ls -l"
+    alias la="ls -a"
+
     PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     export LSCOLORS=exaccxdxGxegedabagehex
     cp /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash /usr/local/etc/bash_completion.d/
     source /usr/local/etc/bash_completion.d/git-completion.bash
+else
+    LS_COLORS="di=34:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
+    alias ls="ls --color"
 fi
