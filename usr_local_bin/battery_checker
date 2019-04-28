@@ -9,10 +9,10 @@ battery_level=$(echo $battery_level | sed -e 's/percentage: \([0-9]\+\)%/\1/')
 on_ac_power
 charging=$((1 - $(echo $?)))
 
-if [ $battery_level -lt 30 -a $charging -eq 0 ]
+if [ $battery_level -lt 25 -a $charging -eq 0 ]
 then
-    notify-send "Battery Warning" "WARNING: Battery level: $battery_level%" --urgency=critical
-elif [ 70 -lt $battery_level -a $charging -eq 1 ]
+    notify-send "Battery Warning" "WARNING: Battery level: $battery_level%" --urgency=normal
+elif [ 75 -lt $battery_level -a $charging -eq 1 ]
 then
-    notify-send "Charged!" "Battery is charged. Current level: $battery_level%" --urgency=critical --icon="/usr/local/bin/charged.png"
+    notify-send "Charged!" "Battery is charged. Current level: $battery_level%" --urgency=normal --icon="/usr/local/bin/charged.png"
 fi
