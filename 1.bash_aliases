@@ -43,6 +43,7 @@ then
     export LSCOLORS=exaccxdxGxegedabagehex
     cp /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash /usr/local/etc/bash_completion.d/
     source /usr/local/etc/bash_completion.d/git-completion.bash
+    export BASH_SILENCE_DEPRECATION_WARNING=1
 else
     LS_COLORS="di=34:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
     alias ls="ls --color"
