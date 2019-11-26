@@ -11,8 +11,8 @@ charging=$((1 - $(echo $?)))
 
 if [ $battery_level -lt 30 -a $charging -eq 0 ]
 then
-    notify-send "Battery Warning" "WARNING: Battery level: $battery_level%" --urgency=critical
-elif [ 70 -lt $battery_level -a $charging -eq 1 ]
+    notify-send "Battery Warning" "WARNING: Battery level: $battery_level%" --urgency=normal
+elif [ 75 -lt $battery_level -a $charging -eq 1 ]
 then
-    notify-send "Charged!" "Battery is charged. Current level: $battery_level%" --urgency=critical --icon="/usr/local/bin/charged.png"
+    notify-send "Charged!" "Battery is charged. Current level: $battery_level%" --urgency=normal --icon="/usr/local/bin/charged.png"
 fi

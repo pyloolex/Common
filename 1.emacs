@@ -71,6 +71,15 @@
 (global-set-key (kbd "M-s TAB") (lambda() (interactive) (insert "    ")))
 (global-set-key (kbd "C-x <home>") (lambda() (interactive) (my-line-begin)))
 (global-set-key (kbd "C-x %") 'query-replace)
+(global-set-key (kbd "C-x g")
+                (lambda() (interactive)
+                    (execute-kbd-macro (kbd "C-x v g"))
+                    (sleep-for 1)
+                    (vc-annotate-mode)
+                )
+)
+(global-set-key (kbd "M-a") 'move-beginning-of-line)
+(global-set-key (kbd "M-e") 'move-end-of-line)
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
@@ -97,9 +106,6 @@
 ; If a region is selected, you can type something, and it will replace your
 ; selected region.
 (delete-selection-mode 1)
-
-; Remove color from builtin 'git blame'
-(defalias 'vcam 'vc-annotate-mode)
 
 
 ; ____________________________________________________________________________
