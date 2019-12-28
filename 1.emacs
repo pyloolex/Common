@@ -1,7 +1,6 @@
 ; ____________________________________________________________________________
 ; Installing packages
 ;_____________________________________________________________________________
-
 ; Attention!!! If you want to use xclip, first you must install it in ubuntu:
 ; sudo apt install xclip
 ;
@@ -80,6 +79,12 @@
 )
 (global-set-key (kbd "M-a") 'move-beginning-of-line)
 (global-set-key (kbd "M-e") 'move-end-of-line)
+; Show file name shortcut.
+(global-set-key (kbd "M-s b f n")
+                (lambda() (interactive)
+                    (message (buffer-file-name (window-buffer (minibuffer-selected-window))))
+                )
+)
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
@@ -223,3 +228,16 @@
 ; ____________________________________________________________________________
 ; Trashcan (it is filled automatically)
 ; ____________________________________________________________________________
+(put 'narrow-to-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (xclip))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
