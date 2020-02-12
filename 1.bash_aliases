@@ -39,6 +39,7 @@ then
     alias ls="ls -G"
     alias ll="ls -l"
     alias la="ls -a"
+    alias restnotif="pkill notificationcenterui"
 
     PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     export LSCOLORS=exaccxdxGxegedabagehex
