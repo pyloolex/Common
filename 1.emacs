@@ -120,6 +120,9 @@
 ; Hooks
 ; ____________________________________________________________________________
 
+; Remove all the trailing whitespaces during saving a buffer.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (add-hook 'c-mode-hook
     (lambda ()
         ;; Auto indent LPAREN
