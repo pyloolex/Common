@@ -62,7 +62,10 @@
 ;(electric-indent-mode -1)
 
 ; Forbid auto-indent previous line
-(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+; (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+; Forbid auto-indent previous line (better version for Java)?
+(setq-default electric-indent-inhibit t)
+
 
 (setq forward-sexp-function nil)
 
