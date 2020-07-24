@@ -21,8 +21,8 @@ pylintdiff() {
 }
 
 HISTCONTROL=ignoreboth:erasedups
-HISTSIZE=3000
-HISTFILESIZE=3000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # Update bash_history after every command. It's useful when you use
 # tmux. Because you don't have to close every window manually in order
