@@ -108,12 +108,13 @@
 (add-to-list 'auto-mode-alist '("\\.tac\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.tin\\'" . c++-mode))
 
-; Associate .jsx files with js-mode
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
-
 ; If a region is selected, you can type something, and it will replace your
 ; selected region.
 (delete-selection-mode 1)
+
+; JS indentation = 2 spaces
+(setq js-indent-level 2)
+(setq tab-width 2)
 
 
 ; ____________________________________________________________________________
@@ -152,23 +153,42 @@
     )
 )
 
+; Old version
+;; (add-hook 'js-mode-hook
+;;     (lambda()
+;;         (local-set-key (kbd "{")
+;;             (lambda() (interactive)
+;;                 (my-bsd-lparen-align)
+;;                 (insert "{")
+;;             )
+;;         )
+;;         (local-set-key (kbd "}")
+;;             (lambda() (interactive)
+;;                 (insert "}")
+;;                 (indent-according-to-mode)
+;;                 ;(c-indent-command)
+;;             )
+;;         )
+;;         (setq js-indent-level 2)
+;;         (setq tab-width 2)
+;;     )
+;; )
+
+; New version
 (add-hook 'js-mode-hook
     (lambda()
         (local-set-key (kbd "{")
             (lambda() (interactive)
-                (my-bsd-lparen-align)
                 (insert "{")
+                (indent-according-to-mode)
             )
         )
         (local-set-key (kbd "}")
             (lambda() (interactive)
                 (insert "}")
                 (indent-according-to-mode)
-                ;(c-indent-command)
             )
         )
-        (setq js-indent-level 2)
-        (setq tab-width 2)
     )
 )
 
@@ -240,7 +260,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (xclip))))
+ '(package-selected-packages (quote (xclip)))
+ '(safe-local-variable-values
+   (quote
+    ((eval ignore-errors
+           (require
+            (quote whitespace))
+           (whitespace-mode 1))
+     (whitespace-style face indentation)
+     (eval progn
+           (c-set-offset
+            (quote case-label)
+            (quote 0))
+           (c-set-offset
+            (quote innamespace)
+            (quote 0))
+           (c-set-offset
+            (quote inline-open)
+            (quote 0)))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
