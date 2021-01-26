@@ -29,7 +29,10 @@
 ; Including packages
 ;_____________________________________________________________________________
 
-(require 'cl)
+; It doesn't work in Emacs 27. I don't know why it was needed earlier.
+; Not it seems to be not needed.
+; (require 'cl)
+
 (require 'xclip) ; M-x package-list-packages to install
 
 
@@ -50,7 +53,9 @@
 (show-paren-mode t) ; Highlight expression between {}, (), []
 (setq show-paren-style 'parenthesis) ; parenthesis | expression | mixed
 
-(setq font-lock-maximum-decoration '((html-mode . 1)))
+; It doesn't work in Emacs 27. I don't know why it was needed earlier.
+; Not it seems to be not needed.
+; (setq font-lock-maximum-decoration '((html-mode . 1)))
 
 (setq column-number-mode t)
 
