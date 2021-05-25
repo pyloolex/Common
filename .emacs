@@ -265,24 +265,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (xclip)))
+ '(package-selected-packages '(xclip))
  '(safe-local-variable-values
-   (quote
-    ((eval ignore-errors
-           (require
-            (quote whitespace))
+   '((eval ignore-errors
+           (require 'whitespace)
            (whitespace-mode 1))
      (whitespace-style face indentation)
      (eval progn
-           (c-set-offset
-            (quote case-label)
-            (quote 0))
-           (c-set-offset
-            (quote innamespace)
-            (quote 0))
-           (c-set-offset
-            (quote inline-open)
-            (quote 0)))))))
+           (c-set-offset 'case-label '0)
+           (c-set-offset 'innamespace '0)
+           (c-set-offset 'inline-open '0)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
