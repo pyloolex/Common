@@ -21,6 +21,8 @@ pylintdiff() {
 
 if [[ $(hostname) == "aslootsky-mbp" ]]
 then
+    # Settings for ZSH #
+
     alias ls="ls -G"
     alias ll="ls -l"
     alias la="ls -a"
@@ -30,8 +32,6 @@ then
     # Don't autocomplete command if there are multiple options.
     setopt no_auto_menu
     setopt bash_auto_list
-
-    export LSCOLORS=exaccxdxGxegedabagehex
 
     # Just do this one time: "compaudit | xargs chmod g-w"
     # if you see errors about unsecure files.
@@ -59,12 +59,11 @@ then
     # --- History end --- #
 
 
-    #PS1='\[\033[01;32m\]\u@Mac\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    #cp /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash /usr/local/etc/bash_completion.d/
-    #source /usr/local/etc/bash_completion.d/git-completion.bash
-    #export BASH_SILENCE_DEPRECATION_WARNING=1
-
+    PROMPT="%B%F{10}%n%f%b%B%F{10}@%f%b%B%F{10}%m%f%b:%B%F{12}%~%f%b$ "
+    export LSCOLORS=exaccxdxGxegedabagehex
 else
+    # Bash settings #
+
     # --- History begin --- #
         alias historyreset="history -c; history -r"
 
@@ -81,5 +80,5 @@ else
     # --- History end --- #
 
     alias ls="ls --color"
-LS_COLORS="di=34:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
+    LS_COLORS="di=34:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
 fi
