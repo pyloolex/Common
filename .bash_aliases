@@ -60,7 +60,7 @@ then
 
 
     PROMPT="%B%F{10}%n%f%b%B%F{10}@%f%b%B%F{10}%m%f%b:%B%F{12}%~%f%b$ "
-    export LSCOLORS=exaccxdxGxegedabagehex
+    export LSCOLORS=dxaccxdxGxegedabagehex
 else
     # Bash settings #
 
@@ -80,5 +80,5 @@ else
     # --- History end --- #
 
     alias ls="ls --color"
-    LS_COLORS="di=34:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
+    LS_COLORS="di=33:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
 fi
