@@ -16,7 +16,7 @@ pylintdiff() {
         branch="master"
     fi
 
-    git diff $branch --name-only | grep -e '.py$' | xargs pylint -r no
+    git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper
 }
 
 if [[ $(hostname) == "aslootsky-mbp" ]]
