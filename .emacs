@@ -109,8 +109,15 @@
 ; Allows copy and paste from Emacs
 (setq xclip-mode 1)
 
+; Create custom .tac mode.
+; Syntax highlighting is okay with c++-mode but indents are
+; inappropriate.
+(define-derived-mode tac-mode c++-mode "TACC .tac mode")
+(define-key tac-mode-map (kbd "RET") 'electric-indent-just-newline)
+(define-key tac-mode-map (kbd "}") (lambda() (interactive) (insert "}")))
+
 ; Associate .tac files with c++-mode
-(add-to-list 'auto-mode-alist '("\\.tac\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.tac\\'" . tac-mode))
 (add-to-list 'auto-mode-alist '("\\.tin\\'" . c++-mode))
 
 ; If a region is selected, you can type something, and it will replace your
