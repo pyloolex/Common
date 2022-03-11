@@ -114,7 +114,7 @@
 ; inappropriate.
 (define-derived-mode tac-mode c++-mode "TACC .tac mode")
 (define-key tac-mode-map (kbd "RET") 'electric-indent-just-newline)
-(define-key tac-mode-map (kbd "}") (lambda() (interactive) (insert "}")))
+(add-hook 'tac-mode-hook (lambda() (electric-indent-local-mode -1)))
 
 ; Associate .tac files with c++-mode
 (add-to-list 'auto-mode-alist '("\\.tac\\'" . tac-mode))
@@ -199,6 +199,18 @@
             (lambda() (interactive)
                 (insert "}")
                 (indent-according-to-mode)
+            )
+        )
+        ; Needed when writing
+        ; const funName = () =>
+        ; {
+        ;    ...
+        (local-set-key (kbd "M-p")
+            (lambda() (interactive)
+                (backward-char)
+                (my-bsd-lparen-align)
+                (forward-char)
+                (newline-and-indent)
             )
         )
     )
