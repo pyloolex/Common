@@ -282,6 +282,7 @@
 
 (set-face-foreground 'minibuffer-prompt "cyan")
 
+; (set-face-attribute 'default nil :foreground "#000000")
 
 ; ____________________________________________________________________________
 ; Trashcan (it is filled automatically)
