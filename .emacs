@@ -6,14 +6,22 @@
 ;
 ; And then emacs will do the rest of work.
 
+(require 'package)
+
 ; list the packages you want
 (setq package-list '(xclip))
 
 ; list the repositories containing them
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("MELPA" . "http://melpa.org/packages/"))
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
+
+; Do this one time:
+; (package-refresh-contents)
+
+(package-install 'kotlin-mode)
 
 ; fetch the list of packages available
 (unless package-archive-contents
