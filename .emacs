@@ -18,7 +18,7 @@
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-; Do this one time:
+; Do this one time after Emacs installation (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!):
 ; (package-refresh-contents)
 
 (package-install 'kotlin-mode)
@@ -101,6 +101,11 @@
                     (message (buffer-file-name (window-buffer (minibuffer-selected-window))))
                 )
 )
+(global-set-key (kbd "M-s DEL")
+                (lambda() (interactive)
+                  (delete-backward-char 4)
+                )
+)
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
@@ -158,6 +163,11 @@
                 (insert "}")
                 (indent-according-to-mode)
             )
+        )
+        (local-set-key (kbd "M-s DEL")
+                (lambda() (interactive)
+                  (c-electric-backspace 4)
+                )
         )
     )
 )
@@ -228,19 +238,25 @@
         (local-set-key (kbd "{")
             (lambda() (interactive)
                 (insert "{")
-                (indent-according-to-mode)
+                (backward-char)
+                (my-bsd-lparen-align)
+                (forward-char)
             )
         )
         (local-set-key (kbd "}")
             (lambda() (interactive)
                 (insert "}")
                 (indent-according-to-mode)
+                (end-of-line)
             )
         )
         ; Needed when writing
         ; const funName = () =>
         ; {
         ;    ...
+        ;
+        ; P.S. Maybe not so important if I already do this as a
+        ; reaction to the "{" insertion.
         (local-set-key (kbd "M-p")
             (lambda() (interactive)
                 (backward-char)
@@ -321,7 +337,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(kotlin-mode lsp-mode xclip))
+ '(package-selected-packages '(lsp-mode xclip))
  '(safe-local-variable-values
    '((eval ignore-errors
            (require 'whitespace)
