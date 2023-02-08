@@ -16,7 +16,7 @@ pylintdiff() {
         branch="master"
     fi
 
-    git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper
+    git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper -i
 }
 
 if [[ $(hostname) == "aslootsky-mbp" ]]
@@ -40,6 +40,9 @@ then
 
     # GNU grep instead of the default MACOS one.
     PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+    # Android debugging tool.
+    PATH="/Users/aslootsky/Library/Android/sdk/platform-tools:$PATH"
 
     # --- History begin --- #
         # Append to history after every command.
