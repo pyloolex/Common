@@ -247,7 +247,8 @@
             (lambda() (interactive)
                 (insert "}")
                 (indent-according-to-mode)
-                (end-of-line)
+                ; (end-of-line)
+
             )
         )
         ; Needed when writing
@@ -300,7 +301,7 @@
     (goto-char init_pos)
     (if (>= diff 0)
         (delete-backward-char diff)
-        (loop for i from 1 to (- diff) do (insert " "))
+        (cl-loop for i from 1 to (- diff) do (insert " "))
     )
 )
 
