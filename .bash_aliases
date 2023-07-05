@@ -8,6 +8,7 @@ alias tmx="tmux new-session -n ''"
 alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
 alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 
+
 pylintdiff() {
     if [ "$#" -ne 0 ]
     then
@@ -17,7 +18,9 @@ pylintdiff() {
     fi
 
     git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper -i
+    git diff $branch --name-only | grep -e '.py$' | xargs python2 -m pylint -r n --rcfile=pylintrc
 }
+
 
 if [[ $(hostname) == "aslootsky-mbp" ]]
 then
