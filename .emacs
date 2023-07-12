@@ -9,7 +9,7 @@
 (require 'package)
 
 ; list the packages you want
-(setq package-list '(xclip))
+(setq package-list '(xclip clipetty))
 
 ; list the repositories containing them
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")))
@@ -22,6 +22,7 @@
 ; (package-refresh-contents)
 
 (package-install 'kotlin-mode)
+(package-install 'use-package)
 
 ; fetch the list of packages available
 (unless package-archive-contents
@@ -43,6 +44,13 @@
 
 (require 'xclip) ; M-x package-list-packages to install
 
+
+; Clipetty for copy-pasting.
+(require 'use-package)
+(require 'clipetty)
+(use-package clipetty
+:ensure t
+:hook (after-init . global-clipetty-mode))
 
 ; ____________________________________________________________________________
 ; Using default emacs's settings
