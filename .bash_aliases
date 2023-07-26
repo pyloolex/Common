@@ -67,6 +67,8 @@ then
 
     PROMPT="%B%F{10}%n%f%b%B%F{10}@%f%b%B%F{10}%m%f%b:%B%F{12}%~%f%b$ "
     export LSCOLORS=DxaccxdxGxegedabagehex
+
+    bindkey -s '^[e' 'ssh sfvirtual\n'
 else
     # Bash settings #
 
