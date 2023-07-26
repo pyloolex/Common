@@ -89,4 +89,7 @@ else
 
     alias ls="ls --color"
     LS_COLORS="di=1;33:ln=30;42:so=32:pi=33:ex=1;36:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=34;47:ow=34"
+
+    bind '"\eh": "tmux attach-session -t 0\n"'
+    bind '"\ev": "tmux attach-session -t 1\n"'
 fi
