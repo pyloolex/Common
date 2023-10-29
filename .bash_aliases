@@ -18,7 +18,6 @@ pylintdiff() {
     fi
 
     git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper -i
-    git diff $branch --name-only | grep -e '.py$' | xargs python2 -m pylint -r n --rcfile=pylintrc
 }
 
 
