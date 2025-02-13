@@ -22,6 +22,7 @@
 ; (package-refresh-contents)
 
 (package-install 'kotlin-mode)
+(package-install 'go-mode)
 (package-install 'use-package)
 
 ; fetch the list of packages available
@@ -276,6 +277,17 @@
         )
     )
 )
+(add-hook 'go-mode-hook
+    (lambda()
+        (local-set-key (kbd "}")
+            (lambda() (interactive)
+                (insert "}")
+                (indent-according-to-mode)
+                ; (end-of-line)
+            )
+        )
+    )
+)
 
 
 ; ____________________________________________________________________________
@@ -346,7 +358,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(lsp-mode xclip))
+ '(package-selected-packages '(jinja2-mode lsp-mode xclip))
  '(safe-local-variable-values
    '((eval ignore-errors
            (require 'whitespace)
