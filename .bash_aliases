@@ -1,29 +1,12 @@
 alias sudo="sudo "
 alias emc="emacs -nw"
-alias py3="python3"
-alias postgre="sudo -u postgres -i"
 alias grep="grep --color"
 alias tmx="tmux new-session -n ''"
 alias agrep="grep --exclude-dir='*test*'"
 alias grepa="grep --exclude-dir='*test*'"
 
-alias slicercli_update='touch ~/.slicerconfig; docker pull docker-registry:5000/slicercli:latest'
-alias slicercli_run='docker run --rm -i -t -v $HOME:/root  -v $HOME:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 
-
-pylintdiff() {
-    if [ "$#" -ne 0 ]
-    then
-        branch="$1"
-    else
-        branch="master"
-    fi
-
-    git diff $branch --name-only | grep -e '.py$' | xargs tools/pylint_wrapper -i
-}
-
-
-if [[ $(hostname) == "aslootsky-mbp" ]]
+if [[ $(hostname) == "MacBook-Pro.local" ]]
 then
     # Settings for ZSH #
 
