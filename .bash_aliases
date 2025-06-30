@@ -6,7 +6,7 @@ alias agrep="grep --exclude-dir='*test*'"
 alias grepa="grep --exclude-dir='*test*'"
 
 
-if [[ $(hostname) == "MacBook-Pro.local" ]]
+if [[ "$OSTYPE" == "darwin"* ]]
 then
     # Settings for ZSH #
 
@@ -25,8 +25,10 @@ then
     # This is a git autocompletion btw.
     autoload -Uz compinit && compinit
 
-    # GNU grep instead of the default MACOS one.
-    PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+    # GNU grep instead of the default MACOS one (more colourful).
+    # Do one time:
+    # brew install grep
+    PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 
     # Android debugging tool.
     PATH="/Users/aslootsky/Library/Android/sdk/platform-tools:$PATH"
