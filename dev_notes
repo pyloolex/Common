@@ -1,3 +1,9 @@
+Activity overview overlay key remap
+
+    gsettings set org.gnome.mutter overlay-key 'Alt_L'
+
+* * *
+
 Ubuntu switch language shortcut Alt + /
 
     gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>slash']"
