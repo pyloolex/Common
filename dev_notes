@@ -1,4 +1,10 @@
+Ubuntu switch language shortcut Alt + /
+
+    gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>slash']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>slash']"
+
+* * *
+
 # Kivy installation does not find GL/gl.h
 Solution - https://stackoverflow.com/questions/10283465/kivy-installation-does-not-find-gl-gl-h
 sudo apt install libgl1-mesa-dev
-
