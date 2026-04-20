@@ -2,9 +2,9 @@ alias sudo="sudo "
 alias emc="emacs -nw"
 alias grep="grep --color"
 alias tmx="tmux new-session -n ''"
-alias agrep="grep --exclude-dir='*test*'"
-alias grepa="grep --exclude-dir='*test*'"
-
+alias agrep="grep --exclude-dir='*test*' --exclude='*test*' --exclude='junit-*'"
+alias qgrep="grep --exclude-dir='*test-results*' --exclude='junit-*'"
+alias grepaq="grep --exclude-dir='*test-results*'"
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
@@ -25,6 +25,10 @@ then
     # This is a git autocompletion btw.
     autoload -Uz compinit && compinit
 
+    # Move with option + <- by one word till slash like in a bash.
+    autoload -Uz select-word-style
+    select-word-style bash
+
     # GNU grep instead of the default MACOS one (more colourful).
     # Do one time:
     # brew install grep
@@ -32,6 +36,9 @@ then
 
     # Android debugging tool.
     PATH="/Users/aslootsky/Library/Android/sdk/platform-tools:$PATH"
+
+    # Terraform
+    PATH="/Users/aslootsky/programming/terraform_1.12.2_darwin_arm64:$PATH"
 
     # --- History begin --- #
         # Append to history after every command.
@@ -44,8 +51,8 @@ then
         # Manual reset of the history.
         alias historyreset="fc -R"
 
-        HISTSIZE=10000
-        SAVEHIST=10000
+        HISTSIZE=30000
+        SAVEHIST=30000
 
         bindkey '^F' history-incremental-search-forward
     # --- History end --- #
@@ -53,8 +60,14 @@ then
 
     PROMPT="%B%F{10}%n%f%b%B%F{10}@%f%b%B%F{10}%m%f%b:%B%F{12}%~%f%b$ "
     export LSCOLORS=DxaccxdxGxegedabagehex
+    # Colorize completions using default `ls` colors.
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
     bindkey -s '^[e' 'ssh sfvirtual\n'
+
+    # Lightweight psql.
+    # brew install libpq
+    PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 else
     # Bash settings #
 
@@ -67,8 +80,8 @@ else
         PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
         HISTCONTROL=ignoreboth:erasedups
-        HISTSIZE=10000
-        HISTFILESIZE=10000
+        HISTSIZE=30000
+        HISTFILESIZE=30000
 
         bind '"\C-f": forward-search-history'
     # --- History end --- #
