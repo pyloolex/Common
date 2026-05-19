@@ -24,6 +24,9 @@
 (package-install 'kotlin-mode)
 (package-install 'go-mode)
 (package-install 'use-package)
+(package-install 'dockerfile-mode)
+(package-install 'terraform-mode)
+(package-install 'yaml-mode)
 
 ; fetch the list of packages available
 (unless package-archive-contents
@@ -115,6 +118,9 @@
                   (delete-backward-char 4)
                 )
 )
+; C-b is used by tmux to switch between windows.
+; In emacs it was just move cursor one character back.
+; (global-unset-key (kbd "C-b"))
 
 ; Auto reload files if they were changed on the disk.
 (global-auto-revert-mode t)
@@ -358,14 +364,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(jinja2-mode lsp-mode xclip))
+ '(package-selected-packages nil)
  '(safe-local-variable-values
-   '((eval ignore-errors
-           (require 'whitespace)
-           (whitespace-mode 1))
+   '((eval ignore-errors (require 'whitespace) (whitespace-mode 1))
      (whitespace-style face indentation)
-     (eval progn
-           (c-set-offset 'case-label '0)
+     (eval progn (c-set-offset 'case-label '0)
            (c-set-offset 'innamespace '0)
            (c-set-offset 'inline-open '0)))))
 (custom-set-faces
