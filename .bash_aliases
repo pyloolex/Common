@@ -1,10 +1,10 @@
 alias sudo="sudo "
 alias emc="emacs -nw"
-alias grep="grep --color"
 alias tmx="tmux new-session -n ''"
+alias grep="grep --color"
 alias agrep="grep --exclude-dir='*test*' --exclude='*test*' --exclude='junit-*'"
 alias qgrep="grep --exclude-dir='*test-results*' --exclude='junit-*'"
-alias grepaq="grep --exclude-dir='*test-results*'"
+alias arcpr="arc pr create --label='diehard/no-ai-review'"
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
