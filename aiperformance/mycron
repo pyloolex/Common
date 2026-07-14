@@ -1,0 +1,4 @@
+# 0 1-23/3 * * * sleep $((RANDOM % 3600)) && ~/aiperformance/script.py
+# */3 * * * * /opt/homebrew/bin/python3 /Users/aslootsky/aiperformance/script.py >> /Users/aslootsky/aiperformance/logs/cron.log 2>&1
+# */4 * * * * /bin/bash -lc 'sleep $((RANDOM \% 30)) && /opt/homebrew/bin/python3 /Users/aslootsky/aiperformance/script.py' >> /Users/aslootsky/aiperformance/logs/cron.log 2>&1
+15 * * * * /bin/bash -lc 'sleep $((RANDOM \% 600)) && /opt/homebrew/bin/python3 /Users/aslootsky/aiperformance/script.py' >> /Users/aslootsky/aiperformance/logs/cron.log 2>&1
