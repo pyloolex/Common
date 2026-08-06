@@ -4,7 +4,7 @@ alias tmx="tmux new-session -n ''"
 alias grep="grep --color"
 alias agrep="grep --exclude-dir='*test*' --exclude='*test*' --exclude='junit-*'"
 alias qgrep="grep --exclude-dir='*test-results*' --exclude='junit-*'"
-alias arcpr="arc pr create --label='diehard/no-ai-review'" --label='trust/no-ai-review'"
+alias arcpr="arc pr create --label='diehard/no-ai-review' --label='trust/no-ai-review'"
 
 if [[ "$OSTYPE" == "darwin"* ]]
 then
